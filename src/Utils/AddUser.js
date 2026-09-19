@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt")
 const {User} = require("../Models/UserSchema")
 
-const addOwner = (name, email, password) => {
+const addUser = (name, email, password) => {
 bcrypt.hash(password, 10)
     .then((data) => {
         User.create({
@@ -14,4 +14,4 @@ bcrypt.hash(password, 10)
 }
 
 
-module.exports = { addOwner }
+module.exports = { addUser }

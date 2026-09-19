@@ -3,8 +3,9 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cp = require("cookie-parser")
 const {UserRouter} = require("./Routes/AuthenticationRoute")
-// const {addOwner} = require("../Utils/AddOwner")
+// const {addUser} = require("../Utils/AddUser")
 const cors = require("cors")
+const { OwnerRouter } = require("./Routes/OwnerRoute")
 const app = express()
 
 
@@ -14,13 +15,14 @@ app.use(cors({
 app.use(cp())
 app.use(express.json())
 app.use("/api/auth", UserRouter)
+app.use("/api/owner", OwnerRouter)
 
 
 mongoose.connect(process.env.DB_URL)
 .then(() => {
     console.log("Database Connected")
 
-    // addOwner("Adya", "adya@gmail.com")
+    // addUser("Adya", "adya@gmail.com")
 
     const port = process.env.PORT || 8080
 
