@@ -6,6 +6,7 @@ const {UserRouter} = require("./Routes/AuthenticationRoute")
 // const {addUser} = require("../Utils/AddUser")
 const cors = require("cors")
 const { OwnerRouter } = require("./Routes/OwnerRoute")
+const { AdminRouter } = require("./Routes/AdminRoute")
 const app = express()
 
 
@@ -16,6 +17,7 @@ app.use(cp())
 app.use(express.json())
 app.use("/api/auth", UserRouter)
 app.use("/api/owner", OwnerRouter)
+app.use("/api/admin", AdminRouter)
 
 
 mongoose.connect(process.env.DB_URL)
